@@ -24,12 +24,11 @@ The [MNIST database of handwritten digits](http://yann.lecun.com/exdb/mnist/) is
 [![youtube](images/youtube.png)](https://youtu.be/6wWdNg0GMV4)
 *Check out the [Walk-through Video](https://youtu.be/6wWdNg0GMV4)!*
 
-
 ## 1. Deploy a Kubernetes Cluster and install Kubeflow
 
 Install Kubeflow on your Kubernetes cluster. You can find more information in the [Kubeflow docs](https://www.kubeflow.org/docs/started/installing-kubeflow/).
 
-You can check with kubectl if all pods are coming up successfully: 
+You can check with kubectl if all pods are coming up successfully:
 
 ```
 flpachin@FLPACHIN-M-MY32 ~ % kubectl get pods --all-namespaces
@@ -110,7 +109,7 @@ and access the Kubeflow Central Dashboard remotely at [http://localhost:8080](ht
 
 In this demo you will access the Kubeflow Pipeline via the Python SDK in a Jupyter notebook. Therefore, one additional setting is required to allow this.
 
-At first insert your Kubeflow username in this Kubernetes manifest (your Kubeflow username is also the name of a Kubernetes namespace where all your user-specific containers will be spun up): [kubeflow_config/access_kfp_from_jupyter_notebook.yaml](kubeflow_config/access_kfp_from_jupyter_notebook.yaml). You can the extract namespace name under the **Manage Contributers** menu.
+At first insert your Kubeflow username in this Kubernetes manifest (your Kubeflow username is also the name of a Kubernetes namespace where all your user-specific containers will be spun up): [kubeflow_configs/access_kfp_from_jupyter_notebook.yaml](./kubeflow_configs/access_kfp_from_jupyter_notebook.yaml). You can the extract namespace name under the **Manage Contributors** menu.
 
 Once done, apply it with this command:
 
@@ -137,7 +136,7 @@ With Juypter Lab you have access to a terminal and Python notebook in your web b
 At first, let's clone this repository so you have access to the code. You can use the terminal or directly do that in the browser.
 
 ```
-git clone https://github.com/flopach/digits-recognizer-kubeflow-intersight
+git clone https://github.com/styltsars96/digits-recognizer-kubeflow.git
 ```
 
 Then open `digits_recognizer_notebook.ipynb` to get a feeling of the [dataset](http://yann.lecun.com/exdb/mnist/) and its format.
@@ -262,7 +261,3 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LIC
 ## Further Links
 
 * [Cisco DevNet Website](https://developer.cisco.com)
-
-
-
-

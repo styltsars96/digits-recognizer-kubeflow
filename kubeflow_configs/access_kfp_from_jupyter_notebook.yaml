@@ -2,7 +2,7 @@ apiVersion: kubeflow.org/v1alpha1
 kind: PodDefault
 metadata:
   name: access-ml-pipeline
-  namespace: <<<YOUR_USER_PROFILE_NAMESPACE>>>
+  namespace: kubeflow-user-example-com # YOUR_USER_PROFILE_NAMESPACE
 spec:
   desc: Allow access to Kubeflow Pipelines
   selector:
@@ -15,7 +15,7 @@ spec:
           - serviceAccountToken:
               path: token
               expirationSeconds: 7200
-              audience: pipelines.kubeflow.org      
+              audience: pipelines.kubeflow.org
   volumeMounts:
     - mountPath: /var/run/secrets/kubeflow/pipelines
       name: volume-kf-pipeline-token
