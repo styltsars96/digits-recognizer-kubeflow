@@ -2,7 +2,7 @@
 
 The [MNIST database of handwritten digits](http://yann.lecun.com/exdb/mnist/) is the Hello-World of deep learning and therefore the best example to focus not on the ML model itself, but on creating the ML pipeline. The goal here is to create an automated ML pipeline for getting the data, data pre-processing, and creating and serving the ML model. You can see an overview of the digits recognizer application below.
 
-![](images/app-overview.jpg)
+![operation_diagram](images/app-overview.jpg)
 
 **You need to follow these steps**:
 
@@ -95,13 +95,13 @@ kubeflow                    workflow-controller-5cb67bb9db-7bfqc                
 
 Once you have everything deployed, you can do a port-forward with the following command:
 
-```
+```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80
 ```
 
 and access the Kubeflow Central Dashboard remotely at [http://localhost:8080](http://localhost:8080).
 
-![](images/kf_central_dashboard.png)
+![kubeflow_dashboard](images/kf_central_dashboard.png)
 
 ## 3. Setup Jupyter Notebooks
 
@@ -113,7 +113,7 @@ At first insert your Kubeflow username in this Kubernetes manifest (your Kubeflo
 
 Once done, apply it with this command:
 
-```
+```bash
 kubectl apply -f access_kfp_from_jupyter_notebook.yaml
 ```
 
@@ -121,11 +121,11 @@ kubectl apply -f access_kfp_from_jupyter_notebook.yaml
 
 Now, you need to spin a up new Jupyter notebook instance. For the container image select **jupyter-tensorflow-full:v1.5.0**. This can take several minutes depending on your download speed.
 
-![](images/kf_notebook.png)
+![kf-notebook](images/kf_notebook.png)
 
 Don't forget to enable this configuration:
 
-![](images/kf_kfp_config.png)
+![kf-kfp-config](images/kf_kfp_config.png)
 
 ### Access Jupyter Notebooks & Cloning the code from Github
 
@@ -135,7 +135,7 @@ With Juypter Lab you have access to a terminal and Python notebook in your web b
 
 At first, let's clone this repository so you have access to the code. You can use the terminal or directly do that in the browser.
 
-```
+```bash
 git clone https://github.com/styltsars96/digits-recognizer-kubeflow.git
 ```
 
@@ -145,14 +145,39 @@ Then open `digits_recognizer_notebook.ipynb` to get a feeling of the [dataset](h
 
 Once started, double check if the latest versions of the Kubeflow python packages are installed within the Jupyter notebook container:
 
-`pip list` should list versions above these::
+Getting the installed packages of interest...
 
+```bash
+pip list | grep -E 'kfp|kserve'
 ```
+
+...should show versions above the following:
+
+```txt
 kfp                      1.8.12
 kfp-pipeline-spec        0.1.13
 kfp-server-api           1.8.2
 kserve                   0.8.0
 ```
+
+If something is missing, do the appropriate pip install (in existing environment):
+
+```bash
+pip install "kfp>=1.8.12" "kfp-pipeline-spec>=0.1.13" "kfp-server-api>=1.8.2" "kserve>=0.8.0"
+```
+
+OR
+
+recreate the environment with the packages using [requirements.txt](./requirements.txt):
+
+```bash
+pip install pip-tools
+pip-sync requirements.txt
+```
+
+OR
+
+use `pip-compile` from `pip-tools` to update the `requirements.txt` file.
 
 ### Behind a Proxy fix (optional)
 
