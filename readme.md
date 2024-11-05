@@ -256,12 +256,9 @@ Kubeflow Pipelines (KFP) is the most used component of Kubeflow. It allows you t
 
 For the digits recognizer application, the pipeline is already created with the Python SDK. You can find the code in the file `digits_recognizer_pipeline.ipynb`
 
-![](images/pipeline.png)
+![pipeline_view_example_1](images/pipeline.png)
 
-Here is a more detailed example of Kubeflow Pipelines:
-[https://github.com/StatCan/aaw-contrib-jupyter-notebooks/blob/master/kfp-basics/demo_kfp_lightweight_components.ipynb](https://github.com/StatCan/aaw-contrib-jupyter-notebooks/blob/master/kfp-basics/demo_kfp_lightweight_components.ipynb)
-
-![](images/kserve.png)
+![pipeline_view_example_2](images/kserve.png)
 
 ## 7. Test the model inference
 
